@@ -27,8 +27,8 @@ pre{margin:1em;font-size:90%;background-color:#f8f8ff;border:1px solid #dedede;p
 
   <h3>1.1 Push (using jgit)</h3>
   <pre>
-$ echo "publicKey=USK@VoFcfs8Y3VQfwD66ZgXAb4HBiS~WJe8w9mOy2hS9Mh8,OS6~bhX8LHxMLw-sruBkWDeACo-fg4yBZqueMPVj1Uc,AQACAAE/"  &gt; .git/config-name
-$ echo "privateKey=USK@.........,AQECAAE/"  &gt;&gt; .git/config-name
+$ echo "publicKey=USK@VoFcfs8Y3VQfwD66ZgXAb4HBiS~WJe8w9mOy2hS9Mh8,OS6~bhX8LHxMLw-sruBkWDeACo-fg4yBZqueMPVj1Uc,AQACAAE/"  &gt; .git/egit-freenet
+$ echo "privateKey=USK@.........,AQECAAE/"  &gt;&gt; .git/egit-freenet
 $ git remote add fcp freenet://egit-freenet/egit-freenet.git/0/
 $ ./jgit push fcp master
 </pre>
@@ -49,7 +49,7 @@ $ ./jgit clone freenet://USK@VoFcfs8Y3VQfwD66ZgXAb4HBiS~WJe8w9mOy2hS9Mh8,OS6~bhX
 </pre>OR
   <pre>
 $ echo "publicKey=USK@VoFcfs8Y3VQfwD66ZgXAb4HBiS~WJe8w9mOy2hS9Mh8,OS6~bhX8LHxMLw-sruBkWDeACo-fg4yBZqueMPVj1Uc,AQACAAE/" &gt; ~/egit-freenet
-$ ./jgit clone fcp://egit-freenet/test.git
+$ ./jgit clone freenet://egit-freenet/test.git
 </pre>
 
   <h3>1.3 Fetching</h3>
