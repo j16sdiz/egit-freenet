@@ -58,7 +58,8 @@ $ echo "publicKey=USK@VoFcfs8Y3VQfwD66ZgXAb4HBiS~WJe8w9mOy2hS9Mh8,OS6~bhX8LHxMLw
 $ ./jgit push fcp master:master
 </pre>
 
-  <h3>1.4 Other</h3>Fetching from fproxy using git should also work, but it is not tested.
+  <h3>1.4 Other</h3>Fetching from fproxy using git should also work, but it is not tested. Try this:
+<pre>git clone 'http://localhost:8888/?type=text/plain&amp;max-size=2147483647&amp;key=USK@VoFcfs8Y3VQfwD66ZgXAb4HBiS~WJe8w9mOy2hS9Mh8,OS6~bhX8LHxMLw-sruBkWDeACo-fg4yBZqueMPVj1Uc,AQACAAE/egit-freenet.git/6/' egit-freenet</pre>
   <hr>
 
   <h2>2. Internals</h2>
