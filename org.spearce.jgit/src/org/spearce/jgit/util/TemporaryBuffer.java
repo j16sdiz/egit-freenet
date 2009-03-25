@@ -38,6 +38,7 @@
 package org.spearce.jgit.util;
 
 import java.io.BufferedOutputStream;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -291,6 +292,27 @@ public class TemporaryBuffer extends OutputStream {
 				in.close();
 			}
 		}
+	}
+
+	/**
+	 * Get this buffer as InputStream.
+	 * <p>
+	 * This method may only be invoked after {@link #close()} has completed
+	 * normally, to ensure all data is completely transferred.
+	 *
+	 * @return the InputStream
+	 *
+	 * @throws IOException
+	 *             an error occurred reading from a temporary file on the local
+	 *             system, or writing to the output stream.
+	 */
+	public InputStream getInputStream() throws IOException {
+		if (onDiskFile != null) {
+			final FileInputStream in = new FileInputStream(onDiskFile);
+			return in;
+		}
+
+		return new ByteArrayInputStream(toByteArray());
 	}
 
 	/** Clear this buffer so it has no data, and cannot be used again. */
