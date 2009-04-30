@@ -551,9 +551,11 @@ class TransportFcp2 extends Transport implements WalkTransport {
 
 		@Override
 		synchronized void deleteFile(final String path) throws IOException {
+			String resolvedPath = resolvePath(path);
+			
 			checkWrite();
-			smallFile.remove(path);
-			fileList.put(path, URI_DELETED);
+			smallFile.remove(resolvedPath);
+			fileList.put(resolvedPath, URI_DELETED);
 		}
 
 		@Override
@@ -573,23 +575,23 @@ class TransportFcp2 extends Transport implements WalkTransport {
 			return tb;
 		}
 
-		private synchronized void insert(String path, TemporaryBuffer buf,
+		private synchronized void insert(final String path, TemporaryBuffer buf,
 				final ProgressMonitor monitor, final String monitorTask)
 				throws IOException {
 			checkWrite();
 
-			path = resolvePath(path);
-			fileList.remove(path);
-			smallFile.remove(path);
+			String resolvedPath = resolvePath(path);
+			fileList.remove(resolvedPath);
+			smallFile.remove(resolvedPath);
 
 			if (buf.length() < 2048) {
-				smallFile.put(path, buf);
+				smallFile.put(resolvedPath, buf);
 			} else {
 				final Message r = conn.simplePut("CHK@", buf, monitor,
 						monitorTask);
 				if ("PutFailed".equals(r.type))
 					throw new IOException("FCP PutFailed: " + r.field);
-				fileList.put(path, r.field.get("URI"));
+				fileList.put(resolvedPath, r.field.get("URI"));
 			}
 		}
 
