@@ -301,14 +301,10 @@ public class FreenetFCP {
 			return null;
 
 		Message msg = Message.parse(is);
-		System.err.println(msg);
-		System.err.flush();
 		return msg;
 	}
 
 	void send(Message msg) throws IOException {
-		System.out.println(msg);
-		System.out.flush();
 		msg.writeTo(os);
 	}
 
