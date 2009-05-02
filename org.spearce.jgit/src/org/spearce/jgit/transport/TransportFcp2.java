@@ -403,7 +403,8 @@ class TransportFcp2 extends Transport implements WalkTransport {
 			msg.field.put("Identifier", privateKey);
 			msg.field.put("URI", privateKey);
 			msg.field.put("Verbosity", monitor == null ? "0" : "1");
-			msg.field.put("PriorityClass", "2");
+			msg.field.put("PriorityClass", "1");
+			msg.field.put("EarlyEncode", "true"); // progress
 			msg.field.put("Global", "false");
 			msg.field.put("ClientToken", privateKey);
 			msg.field.put("Persistence", "connection");

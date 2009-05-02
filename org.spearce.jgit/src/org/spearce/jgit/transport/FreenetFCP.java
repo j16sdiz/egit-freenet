@@ -144,7 +144,9 @@ public class FreenetFCP {
 		msg.field.put("URI", freenetURI);
 		msg.field.put("Identifier", freenetURI);
 		msg.field.put("Verbosity", monitor == null ? "0" : "1");
+		msg.field.put("PriorityClass", "1");
 		msg.field.put("Global", "false");
+		msg.field.put("EarlyEncode", "true"); // for progress
 		msg.field.put("UploadFrom", "direct");
 		msg.field.put("DataLength", "" + data.length());
 		msg.extraData = data;
@@ -215,6 +217,7 @@ public class FreenetFCP {
 			msg.type = "ClientGet";
 			msg.field.put("URI", freenetURI);
 			msg.field.put("Identifier", rID);
+			msg.field.put("PriorityClass", "1");
 			msg.field.put("Verbosity", "1");
 			msg.field.put("MaxSize", Integer.toString(Integer.MAX_VALUE));
 			msg.field.put("Global", "false");
